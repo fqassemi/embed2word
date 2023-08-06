@@ -21,15 +21,15 @@ def sentiment_algebra(inp_str, sent1, sent2):
     sent = ""
     for inp in sents:
         text_index_inp = gpt_tokenizer.encode(inp, add_prefix_space=True)
-        vector_inp = gpt_model.transformer.wte.weight[text_index_inp,:]
+        vector_inp = word_embeddings[text_index_inp,:]
         #print(vector_inp.shape)
 
         text_index_sent1 = gpt_tokenizer.encode(sent1, add_prefix_space=True)
-        vector_sent1 = gpt_model.transformer.wte.weight[text_index_sent1,:]
+        vector_sent1 = word_embeddings[text_index_sent1,:]
         #print(vector_sent1.shape) 
 
         text_index_sent2 = gpt_tokenizer.encode(sent2, add_prefix_space=True)
-        vector_sent2 = gpt_model.transformer.wte.weight[text_index_sent2,:]
+        vector_sent2 = word_embeddings[text_index_sent2,:]
         #print(vector_sent2.shape) 
 
         new_inp_vec = vector_inp - torch.mean(vector_sent1, dim=0) + torch.mean(vector_sent2, dim=0)

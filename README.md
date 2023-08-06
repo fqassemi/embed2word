@@ -2,7 +2,7 @@
 Turning natural language text into numerical representations has been a focus of NLP for quite some time. The idea is to represent each word with a vector that encapsulates the word's meaning. In 
 the past, word vectors like GLOVE proved useful, although they did not capture "context". With the advent of large language models like GPT, contextual word representations became more prevalent. 
 Here we intend to use the GPT2 model to represent word vectors. This work was done previously, based on a conversation in 2019: 
-https://github.com/huggingface/transformers/issues/1458#issuecomment-1564253345.
+https://github.com/huggingface/transformers/issues/1458#issuecomment-1564253345. This repo ispired by work of @MF-FOOM with: https://github.com/MF-FOOM/wikivec2text
 
 Manipulating word embedding vectors and then converting those vectors back to words is known as semantic arithmetic. Typically, word vectors are low dimensional representations of tokens, which 
 are not necessarily invertible. Here we are using GPT2 as the base model, so having the GPT2LMHeadModel and GPT2Tokenizer is necessary. The PyTorch library is also used.

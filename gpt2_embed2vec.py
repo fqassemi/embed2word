@@ -2,8 +2,8 @@ from transformers import GPT2LMHeadModel, GPT2Tokenizer
 import torch
 import torch.nn.functional as F
 
-gpt_tokenizer = GPT2Tokenizer.from_pretrained('.../HuggingFace/models/gpt2/')
-gpt_model = GPT2LMHeadModel.from_pretrained('.../HuggingFace/models/gpt2/')  # or any other checkpoint
+gpt_tokenizer = GPT2Tokenizer.from_pretrained(path+'/HuggingFace/models/gpt2/')
+gpt_model = GPT2LMHeadModel.from_pretrained(path+'/HuggingFace/models/gpt2/')  # or any other checkpoint
 word_embeddings = gpt_model.transformer.wte.weight  # Word Token Embeddings 
 
 vocab_list = []
@@ -12,13 +12,14 @@ for i in range(gpt_tokenizer.vocab_size):
 
 vocab_tensor = torch.stack(vocab_list, dim=0).squeeze(1)
 
-def sentiment_algebra(inp, sent1, sent2):
-    import spacy
-    nlp = spacy.load('en_core_web_sm')
-    sents = nlp(inp)
+def sentiment_algebra(inp_str, sent1, sent2):
+#    import spacy
+#    nlp = spacy.load('en_core_web_sm')
+#    sents = nlp(inp)
+    sents = [inp_str]
     sent = ""
     for inp in sents:
-        text_index_inp = gpt_tokenizer.encode(inp.text, add_prefix_space=True)
+        text_index_inp = gpt_tokenizer.encode(inp, add_prefix_space=True)
         vector_inp = gpt_model.transformer.wte.weight[text_index_inp,:]
         #print(vector_inp.shape)
 

@@ -15,6 +15,7 @@ expect it to perform well, and it does not.
 
 ## example 
 $ python test_embed2vec.py "This was a good resturant. Their ramen is great." "great" "horrible"
+
 This was horrible horrible resturant. Their ramen is horrible.
 
  

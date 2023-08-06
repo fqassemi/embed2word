@@ -2,8 +2,9 @@ from transformers import GPT2LMHeadModel, GPT2Tokenizer
 import torch
 import torch.nn.functional as F
 
-gpt_tokenizer = GPT2Tokenizer.from_pretrained(path+'/HuggingFace/models/gpt2/')
-gpt_model = GPT2LMHeadModel.from_pretrained(path+'/HuggingFace/models/gpt2/')  # or any other checkpoint
+
+gpt_tokenizer = GPT2Tokenizer.from_pretrained('/HuggingFace/models/gpt2/')
+gpt_model = GPT2LMHeadModel.from_pretrained('/HuggingFace/models/gpt2/')  # or any other checkpoint
 word_embeddings = gpt_model.transformer.wte.weight  # Word Token Embeddings 
 
 vocab_list = []

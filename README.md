@@ -7,13 +7,13 @@ https://github.com/huggingface/transformers/issues/1458#issuecomment-1564253345.
 Manipulating word embedding vectors and then converting those vectors back to words is known as semantic arithmetic. Typically, word vectors are low dimensional representations of tokens, which 
 are not necessarily invertible. Here we are using GPT2 as the base model, so having the GPT2LMHeadModel and GPT2Tokenizer is necessary. The PyTorch library is also used.
 
-#process
+## process
 The idea is to start from text where the goal is to replace one sentiment with another. In order to do that, we first turn all text and sentiment words into vectors. We perform the arithmetic 
 operations, and then project back to the word vocabulary. GPT2 has a limited vocabulary of around 50K, which is significantly less than GPT3's 14,735M vocabulary. Therefore, we do not 
 expect it to perform well, and it does not.
 
 
-#example 
+## example 
 $ python test_embed2vec.py "This was a good resturant. Their ramen is great." "great" "horrible"
 This was horrible horrible resturant. Their ramen is horrible.
 
